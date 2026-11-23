@@ -22,8 +22,8 @@ spoke_vnet = {
   resource_group_name = "rg-apps-network-nonprod-eastasia-001"
 }
 
-# Platform-owned, in the connectivity subscription
-postgres_private_dns_zone_id = "/subscriptions/ce882887-4b87-4377-bc63-076ec3c22a85/resourceGroups/rg-connectivity-dns-prod-eastasia-001/providers/Microsoft.Network/privateDnsZones/privatelink.postgres.database.azure.com"
+# The platform's Postgres private DNS zone is built from the
+# SUBSCRIPTION_ID_CONNECTIVITY secret (locals.tf), not kept here.
 
 # Inside the spoke's 10.0.4.0/22
 subnet_prefixes = {

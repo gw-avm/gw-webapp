@@ -48,7 +48,7 @@ Prerequisites in the landing zone repo: the prod landing zone is onboarded, and 
 1. **Create the GitHub repo** `graemewales13/gw-webapp` (private) and push this code. In GitHub → Settings → Applications → *Terraform Cloud* → Configure, make sure the HCP Terraform app has access to it.
 2. **Landing zone bootstrap** (`terraform apply` in `landing-zone/bootstrap`). This creates the HCP Terraform project `apps`, the workspace `gw-webapp-prod` linked to `infra/`, and its plan and apply identities.
 3. **HCP Terraform:** `apps/gw-webapp-prod` → *New run* → *Plan and apply*. This takes about 15 minutes; PostgreSQL is the slow part.
-4. **GitHub repository variables:** copy `github_actions_variables` from the run's outputs into Settings → Secrets and variables → Actions → **Variables**.
+4. **GitHub settings:** copy `github_actions_variables` from the run's outputs into Settings → Secrets and variables → Actions: the `AZURE_*` IDs as **Secrets** (so they're masked in this public repo's logs), the names as **Variables**. The workflows also need the secrets `SUBSCRIPTION_ID_CONNECTIVITY` (the platform's connectivity subscription, for the central DNS zone) and `PLAN_ENCRYPTION_KEY` (saved plans are published encrypted).
 5. **Deploy both tiers:** Actions → *api* → *Run workflow*, then *frontend* → *Run workflow*. Until then the app shows the nginx welcome page and the VM has nothing to apply.
 6. **Open `frontend_url`** (from the outputs). Allow a few minutes after the apply for the landing zone policy to register the database's DNS record.
 

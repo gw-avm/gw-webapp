@@ -53,6 +53,7 @@ variable "spoke_vnet" {
 variable "postgres_private_dns_zone_id" {
   description = "The platform's central privatelink.postgres.database.azure.com zone. A plain ID, so plans never need to read the connectivity subscription."
   type        = string
+  default     = null # the platform zone in the connectivity subscription (local.postgres_private_dns_zone_id)
 }
 
 variable "subnet_prefixes" {
@@ -114,4 +115,10 @@ variable "github_repository" {
     name     = string
     repo_id  = number
   })
+}
+
+variable "connectivity_subscription_id" {
+  description = "The platform connectivity subscription, which holds the central private DNS zones. Set by the pipeline from the SUBSCRIPTION_ID_CONNECTIVITY secret."
+  type        = string
+  nullable    = false
 }
