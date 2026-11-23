@@ -68,6 +68,6 @@ resource "azurerm_private_endpoint" "postgres" {
   # Contributor on that zone only.
   private_dns_zone_group {
     name                 = "default"
-    private_dns_zone_ids = [var.postgres_private_dns_zone_id]
+    private_dns_zone_ids = [local.postgres_private_dns_zone_id]
   }
 }

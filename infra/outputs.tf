@@ -15,8 +15,9 @@ output "postgres_fqdn" {
   value = azurerm_postgresql_flexible_server.this.fqdn
 }
 
-# Set these as GitHub repository variables (Settings -> Secrets and
-# variables -> Actions -> Variables) for .github/workflows/frontend.yml
+# Set these in GitHub (Settings -> Secrets and variables -> Actions) for the
+# workflows: the AZURE_* IDs as secrets, so they're masked in this public
+# repo's logs, and the names as variables.
 output "github_actions_variables" {
   value = {
     AZURE_CLIENT_ID       = azurerm_user_assigned_identity.github.client_id

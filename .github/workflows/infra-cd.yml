@@ -19,5 +19,6 @@ jobs:
       id-token: write
       contents: read
     uses: ./.github/workflows/infra-cd-template.yml
+    secrets: inherit
     with:
       environment: nonprod
